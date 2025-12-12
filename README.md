@@ -18,8 +18,10 @@ Terminal UI for searching NIST CMVP validated cryptographic modules.
 brew install ethanolivertroy/tap/cmvp
 ```
 
-Or directly:
+### vanta-exporter
+
+CLI tool to export Vanta audit evidence organized by control.
 
 ```bash
-brew install ethanolivertroy/tap/cmvp
+brew install ethanolivertroy/tap/vanta-exporter
 ```
