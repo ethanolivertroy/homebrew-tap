@@ -1,35 +1,13 @@
 # Homebrew Tap
 
-Personal Homebrew tap for my CLI tools.
+Personal Homebrew tap for CLI tools.
 
-## Installation
+## Security Tools
 
-```bash
-brew tap ethanolivertroy/tap
-```
-
-## Formulas
-
-### cmvp
-
-Terminal UI for searching NIST CMVP validated cryptographic modules.
+Security and compliance tools have moved to a dedicated tap:
 
 ```bash
-brew install ethanolivertroy/tap/cmvp
+brew tap ethanolivertroy/sectools
 ```
 
-### vanta-exporter
-
-CLI tool to export Vanta audit evidence organized by control.
-
-```bash
-brew install ethanolivertroy/tap/vanta-exporter
-```
-
-### kevs-tui
-
-Terminal UI for browsing CISA Known Exploited Vulnerabilities (KEV) catalog with EPSS scores, CVSS data, and interactive charts.
-
-```bash
-brew install ethanolivertroy/tap/kevs-tui
-```
+See [homebrew-sectools](https://github.com/ethanolivertroy/homebrew-sectools) for available tools.
