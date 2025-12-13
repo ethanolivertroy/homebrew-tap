@@ -25,3 +25,11 @@ CLI tool to export Vanta audit evidence organized by control.
 ```bash
 brew install ethanolivertroy/tap/vanta-exporter
 ```
+
+### kevs-tui
+
+Terminal UI for browsing CISA Known Exploited Vulnerabilities (KEV) catalog with EPSS scores, CVSS data, and interactive charts.
+
+```bash
+brew install ethanolivertroy/tap/kevs-tui
+```
