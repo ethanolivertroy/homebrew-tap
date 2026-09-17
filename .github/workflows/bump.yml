@@ -1,0 +1,42 @@
+name: Bump wut
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  bump:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Find latest upstream release
+        id: latest
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="$(gh api repos/ethanolivertroy/wut/releases/latest --jq .tag_name)"
+          case "$tag" in
+            v*) ;;
+            *) echo "unexpected tag: $tag" >&2; exit 1 ;;
+          esac
+          echo "version=${tag#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Rewrite formula
+        run: sh scripts/bump.sh "${{ steps.latest.outputs.version }}"
+
+      - name: Commit if the formula changed
+        run: |
+          if git diff --quiet; then
+            echo "already at ${{ steps.latest.outputs.version }}"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Formula/wut.rb
+          git commit -m "wut ${{ steps.latest.outputs.version }}"
+          git push
